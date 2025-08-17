@@ -32,6 +32,17 @@
       transition: all 0.3s ease;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
     }
+
+        /* Animasi fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -77,7 +88,7 @@
   </nav>
   
   <!-- Hero Section -->
-  <section id="home" class="hero-gradient text-white pb-20 pt-32">
+  <section id="home" class="hero-gradient text-white pb-20 pt-32 fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="md:w-1/2 mb-10 md:mb-0">
@@ -96,7 +107,7 @@
   </section>
   
   <!-- Profil Sekolah -->
-  <section id="profil" class="py-20 bg-white">
+  <section id="profil" class="py-20 bg-white fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-blue-900 mb-4">Profil SMK S MEKARSARI</h2>
@@ -127,7 +138,7 @@
   </section>
   
   <!-- Program Keahlian -->
-  <section id="program" class="py-20 bg-gray-50">
+  <section id="program" class="py-20 bg-gray-50 fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-blue-900 mb-4">Program Keahlian</h2>
@@ -168,7 +179,7 @@
         </div>
         
         <!-- Manajemen Perkantoran -->
-        <div class="program-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+        <div class="program-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 fade-in">
           <div class="h-48 overflow-hidden">
             <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a0d555a0-2103-427c-9f53-d9f1e0598be4.png" alt="Siswa jurusan Manajemen Perkantoran sedang belajar menggunakan komputer dan peralatan kantor modern" class="w-full h-full object-cover" />
           </div>
@@ -202,7 +213,7 @@
   </section>
   
   <!-- Fasilitas -->
-  <section id="fasilitas" class="py-20 bg-white">
+  <section id="fasilitas" class="py-20 bg-white fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-blue-900 mb-4">Fasilitas Unggulan</h2>
@@ -247,7 +258,7 @@
   </section>
   
   <!-- Testimoni -->
-  <section id="testimoni" class="py-20 bg-blue-50">
+  <section id="testimoni" class="py-20 bg-blue-50 fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-blue-900 mb-4">Apa Kata Mereka?</h2>
@@ -328,7 +339,7 @@
   </section>
   
   <!-- Kontak -->
-  <section id="kontak" class="py-20 bg-blue-800 text-white">
+  <section id="kontak" class="py-20 bg-blue-800 text-white fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold mb-4">Hubungi Kami</h2>
@@ -435,7 +446,7 @@
   </section>
   
   <!-- Peta Lokasi -->
-  <div class="bg-white">
+  <div class="bg-white fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="text-center mb-8">
         <h2 class="text-2xl font-bold text-blue-900">Lokasi Kami</h2>
@@ -448,7 +459,7 @@
   </div>
   
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white">
+  <footer class="bg-gray-900 text-white fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid md:grid-cols-3 gap-10">
         <div>
@@ -507,6 +518,26 @@
   
   <!-- Custom JS -->
   <script>
+     // Add event listeners for carousel controls
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Delay bertahap (0ms, 100ms, 200ms, dst)
+        setTimeout(() => {
+          entry.target.classList.add('show');
+        }, index * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  fadeElements.forEach(el => observer.observe(el));
+});
+
     // Mobile menu toggle
     document.getElementById('mobile-menu-button').addEventListener('click', function() {
       const menu = document.getElementById('mobile-menu');
