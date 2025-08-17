@@ -1,588 +1,538 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK S Mekarsari - Tambun Selatan</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        html {
-        scroll-behavior: smooth;
-        }
-
-        section {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMK S MEKARSARI | Sekolah Kejuruan Berkualitas di Tambun Selatan</title>
+  <meta name="description" content="SMK S MEKARSARI Tambun Selatan menyelenggarakan pendidikan kejuruan di bidang Teknik Sepeda Motor dan Manajemen Perkantoran">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- Flowbite CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
     
-        section.show {
-        opacity: 1;
-        transform: translateY(0);
-        }
-
-        :root {
-            --primary-color: #0056b3;
-            --secondary-color: #ffc107;
-            --dark-color: #343a40;
-            --light-color: #f8f9fa;
-            --sky-blue: #e6f2ff;
-
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color) !important;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .school-logo {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-        
-        .navbar {
-           background-color: var(--sky-blue);
-           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            color: var(--dark-color) !important;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar {
-                background-color: var(--sky-blue);
-            }
-            .nav-link {
-                padding: 0.5rem 0;
-            }
-        }
-        
-       .hero-section {
-            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6a8c374a-3a87-4c7b-b365-d1a4132eeb44.png') center/cover no-repeat;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            position: relative;
-            transition: all 0.5s ease;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 86, 179, 0.3); /* Light blue overlay */
-            transition: all 0.5s ease;
-        }
-
-        .hero-section:hover::before {
-            background: rgba(0, 86, 179, 0.8); /* Darker blue overlay on hover */
-        }
-        
-        .hero-content {
-            max-width: 600px;
-            position: relative;
-            z-index: 1;
-            opacity: 1;
-            transition: all 0.5s ease;
-        }
-        
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: var(--secondary-color);
-            bottom: -10px;
-            left: 0;
-        }
-        
-        .program-card {
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .program-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .program-img {
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .facility-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            height: 250px;
-        }
-        
-        .gallery-item img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 3rem 0;
-        }
-        
-        .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            transition: color 0.3s;
-        }
-        
-        .social-icons a:hover {
-            color: var(--secondary-color);
-        }
-    </style>
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
-<body>
-    
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="https://placehold.co/100x100" alt="Logo SMK S Mekarsari berbentuk bulat dengan lambang pendidikan dan warna biru-kuning" class="school-logo">
-                <span class="fw-bold">SMK S MEKARSARI</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="#home">Beranda</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="#about">Tentang</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="#program">Program</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="#facilities">Fasilitas</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="#gallery">Galeri</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Kontak</a>
-                    </li>
-                </ul>
-            </div>
+<body class="bg-gray-50">
+  <!-- Navbar -->
+  <nav class="bg-white border-gray-200 shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/221d024f-e3ec-45ea-88c4-5eac599fb966.png" alt="Logo SMK S Mekarsari berupa ilustrasi kuncup bunga mekar dengan warna biru dan putih" class="h-10 w-auto" />
+          <span class="ml-3 text-xl font-bold text-blue-800">SMK S MEKARSARI</span>
         </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="home" class="hero-section show">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="display-4 fw-bold mb-4">Membangun Generasi Unggul dan Berkarakter</h1>
-                <p class="lead mb-4">SMK S Mekarsari Tambun Selatan berkomitmen untuk memberikan pendidikan berkualitas dengan fasilitas lengkap dan tenaga pengajar profesional.</p>
-                <a href="#program" class="btn btn-warning btn-lg px-4 me-2">Program Kami</a>
-                <a href="#contact" class="btn btn-outline-light btn-lg px-4">Hubungi Kami</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/336c9fb7-8c61-445b-9558-e483ee03fcc1.png" alt="Gedung SMK S Mekarsari dengan lingkungan yang asri dan fasilitas lengkap" class="img-fluid rounded shadow">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="section-title">Tentang Kami</h2>
-                    <p>SMK S Mekarsari adalah sekolah menengah kejuruan yang terletak di Tambun Selatan dengan visi menjadi lembaga pendidikan yang menghasilkan lulusan berkompetensi tinggi, berkarakter, dan siap bersaing di dunia kerja.</p>
-                    <p>Dengan pengalaman lebih dari 10 tahun dalam pendidikan kejuruan, kami telah mencetak banyak lulusan yang sukses bekerja di berbagai industri maupun melanjutkan pendidikan ke jenjang yang lebih tinggi.</p>
-                    <div class="d-flex mt-4">
-                        <div class="pe-4">
-                            <h3 class="fw-bold">10+</h3>
-                            <p>Tahun Pengalaman</p>
-                        </div>
-                        <div class="pe-4">
-                            <h3 class="fw-bold">500+</h3>
-                            <p>Siswa Aktif</p>
-                        </div>
-                        <div>
-                            <h3 class="fw-bold">85%</h3>
-                            <p>Penyerapan Kerja</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Program Section -->
-    <section id="program" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Program Keahlian</h2>
-                <p class="lead">Kami menawarkan program keahlian yang relevan dengan kebutuhan industri saat ini</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="program-card card h-100">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eb7ac17f-c4a6-479f-a92d-72c6e39e0d17.png" class="card-img-top program-img" alt="Bengkel Teknik Sepeda Motor dengan siswa sedang praktek memperbaiki mesin motor">
-                        <div class="card-body">
-                            <h3 class="card-title">Teknik Sepeda Motor</h3>
-                            <p class="card-text">Program keahlian yang mempersiapkan siswa untuk menjadi teknisi sepeda motor profesional dengan kompetensi dalam perawatan, perbaikan, dan modifikasi kendaraan roda dua.</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success me-2"></i> Bengkel lengkap standar industri</li>
-                                <li><i class="fas fa-check text-success me-2"></i> Guru berpengalaman dari dunia industri</li>
-                                <li><i class="fas fa-check text-success me-2"></i> Kerjasama dengan bengkel dan dealer motor ternama</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="program-card card h-100">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6b448dda-bfcf-4342-8b9c-97c297923fa7.png" class="card-img-top program-img" alt="Ruang praktek Manajemen Perkantoran dengan siswa sedang belajar menggunakan perangkat kantor modern">
-                        <div class="card-body">
-                            <h3 class="card-title">Manajemen Perkantoran</h3>
-                            <p class="card-text">Program keahlian yang membekali siswa dengan keterampilan administrasi perkantoran modern, pengelolaan dokumen, komunikasi bisnis, dan penggunaan aplikasi perkantoran.</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success me-2"></i> Laboratorium komputer terupdate</li>
-                                <li><i class="fas fa-check text-success me-2"></i> Pelatihan software perkantoran profesional</li>
-                                <li><i class="fas fa-check text-success me-2"></i> Praktek kerja industri di perusahaan ternama</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Facilities Section -->
-    <section id="facilities" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Fasilitas Kami</h2>
-                <p class="lead">Dukung pembelajaran dengan fasilitas yang lengkap dan modern</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4 text-center">
-                    <div class="facility-icon">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <h4>Internet Cepat</h4>
-                    <p>Jaringan wifi berkecepatan tinggi untuk mendukung pembelajaran digital dan riset siswa</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="facility-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h4>Perpustakaan</h4>
-                    <p>Koleksi buku teks dan referensi lengkap dengan ruang baca yang nyaman</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="facility-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <h4>Laboratorium</h4>
-                    <p>Laboratorium praktik dengan peralatan lengkap sesuai standar industri</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="facility-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h4>Kelas Nyaman</h4>
-                    <p>Ruang kelas ber-AC dengan kapasitas optimal untuk kenyamanan belajar</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="facility-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h4>Kantin Sehat</h4>
-                    <p>Kantin dengan makanan sehat dan bergizi dengan harga terjangkau</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="facility-icon">
-                        <i class="fas fa-futbol"></i>
-                    </div>
-                    <h4>Lapangan Olahraga</h4>
-                    <p>Area olahraga lengkap untuk kegiatan ekstrakurikuler dan penyaluran bakat</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Galeri Kegiatan</h2>
-                <p class="lead">Momen berharga di SMK S Mekarsari</p>
-            </div>
-            <div class="row g-3">
-                <div class="col-md-4 col-6">
-                    <div class="gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a53a5e2d-e2ed-4cf5-a7f1-68590b1a83ac.png" alt="Siswa Teknik Sepeda Motor sedang praktek di bengkel bersama instruktur" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 col-6">
-                    <div class="gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7f517eb2-6e2c-4a1c-887a-54a7eaf08e80.png" alt="Siswa Manajemen Perkantoran presentasi di depan kelas dengan slide profesional" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 col-6">
-                    <div class="gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f833d978-6791-4c8f-9e48-6f6cf84cfe72.png" alt="Upacara bendera hari Senin dengan seluruh siswa mengenakan seragam lengkap" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 col-6">
-                    <div class="gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c6b4466d-e5a6-4f8e-a56e-9e06c9cb0d80.png" alt="Kegiatan ekstrakurikuler basket di lapangan sekolah" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 col-6">
-                    <div class="gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/79dd03ef-2f26-4be7-838d-df45d805a9ab.png" alt="Kunjungan industri ke perusahaan mitra untuk pembelajaran langsung" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 col-6">
-                    <div class="gallery-item">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eb712de9-ced7-4c7a-a6d3-2ce6d55d5ca7.png" alt="Wisuda kelulusan siswa dengan cap dan toga di aula sekolah" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="section-title">Hubungi Kami</h2>
-                    <p class="mb-4">Untuk informasi lebih lanjut tentang pendaftaran atau kerjasama, silahkan menghubungi kami melalui formulir berikut atau datang langsung ke kampus kami.</p>
-                    <div class="mb-4">
-                        <h5><i class="fas fa-map-marker-alt text-primary me-2"></i> Alamat</h5>
-                        <p>Jl. Pendidikan No. 123, Mekarsari, Tambun Selatan, Bekasi, Jawa Barat 17510</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5><i class="fas fa-phone-alt text-primary me-2"></i> Telepon</h5>
-                        <p>021-12345678</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5><i class="fas fa-envelope text-primary me-2"></i> Email</h5>
-                        <p>info@smkmekarsari.sch.id</p>
-                    </div>
-                    <div class="social-icons">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card shadow">
-                        <div class="card-body p-4">
-                            <h4 class="card-title mb-4">Formulir Kontak</h4>
-                            <form>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="name" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Nomor Telepon</label>
-                                    <input type="tel" class="form-control" id="phone" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message" class="form-label">Pesan</label>
-                                    <textarea class="form-control" id="message" rows="3" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h4>SMK S Mekarsari</h4>
-                    <p>Membangun generasi unggul dan berkarakter melalui pendidikan kejuruan yang berkualitas.</p>
-                </div>
-                <div class="col-md-2 mb-4 mb-md-0">
-                    <h5>Tautan Cepat</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#home" class="text-white text-decoration-none">Beranda</a></li>
-                        <li><a href="#about" class="text-white text-decoration-none">Tentang</a></li>
-                        <li><a href="#program" class="text-white text-decoration-none">Program</a></li>
-                        <li><a href="#facilities" class="text-white text-decoration-none">Fasilitas</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4 mb-md-0">
-                    <h5>Program Keahlian</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Teknik Sepeda Motor</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Manajemen Perkantoran</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h5>Kontak</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> Tambun Selatan, Bekasi</li>
-                        <li><i class="fas fa-phone-alt me-2"></i> 021-12345678</li>
-                        <li><i class="fas fa-envelope me-2"></i> info@smkmekarsari.sch.id</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4 bg-light">
-            <div class="text-center">
-                <p class="mb-0">© 2023 SMK S Mekarsari. Semua Hak Dilindungi.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <a href="#" class="btn btn-primary btn-lg position-fixed bottom-0 end-0 m-4 rounded-circle shadow" id="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <!-- Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const sections = document.querySelectorAll('section');
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, {
-            threshold: 0.2 // Animation triggers when 20% of section is visible
-        });
-
-        sections.forEach(section => {
-            if (!section.classList.contains('show')) {
-                observer.observe(section);
-            }
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                    });
-                });
-            });
-        });
-
-
-        $(document).ready(function() {
-            // Smooth scrolling for all links
-            $("a").on('click', function(event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-                    
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 800, function(){
-                        window.location.hash = hash;
-                    });
-                }
-            });
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium text-blue-800 hover:bg-blue-50">Beranda</a>
+            <a href="#profil" class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-blue-50">Profil</a>
+            <a href="#program" class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-blue-50">Program</a>
+            <a href="#fasilitas" class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-blue-50">Fasilitas</a>
+            <a href="#testimoni" class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-blue-50">Testimoni</a>
+            <a href="#kontak" class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-blue-50">Kontak</a>
+          </div>
+        </div>
+        
+        <div class="md:hidden">
+          <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-blue-800 hover:bg-blue-50 focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#home" class="block px-3 py-2 text-base font-medium text-blue-800 hover:bg-blue-50">Beranda</a>
+        <a href="#profil" class="block px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-50">Profil</a>
+        <a href="#program" class="block px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-50">Program</a>
+        <a href="#fasilitas" class="block px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-50">Fasilitas</a>
+        <a href="#testimoni" class="block px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-50">Testimoni</a>
+        <a href="#kontak" class="block px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-50">Kontak</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section id="home" class="hero-gradient text-white pb-20 pt-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="md:flex md:items-center md:justify-between">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Membentuk Generasi <span class="text-yellow-300">Kompeten dan Profesional</span></h1>
+          <p class="text-lg mb-8 md:pr-10">SMK S MEKARSARI Tambun Selatan hadir dengan program unggulan untuk mengasah keterampilan siswa dalam menghadapi tantangan dunia kerja.</p>
+          <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+            <a href="#program" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold px-6 py-3 rounded-lg text-center transition duration-300">Lihat Program</a>
+            <a href="#kontak" class="bg-white hover:bg-gray-100 text-blue-800 font-semibold px-6 py-3 rounded-lg text-center transition duration-300">Hubungi Kami</a>
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/02cb2446-30ec-47f2-8ea0-fc1203e2c1d4.png" alt="Siswa SMK S Mekarsari sedang belajar di lab komputer dan bengkel dengan suasana modern" class="rounded-lg shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Profil Sekolah -->
+  <section id="profil" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-blue-900 mb-4">Profil SMK S MEKARSARI</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1560ed6e-63da-4e13-85dc-fdfbb791c8b5.png" alt="Gedung SMK S Mekarsari di Tambun Selatan dengan arsitektur modern dan lingkungan hijau" class="rounded-lg shadow-md" />
+        </div>
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Visi & Misi Sekolah</h3>
+          <p class="text-gray-600 mb-6">SMK S MEKARSARI Tambun Selatan berdiri dengan komitmen untuk menghasilkan lulusan yang kompeten, berkarakter, dan siap bersaing di dunia kerja.</p>
+          
+          <h4 class="text-lg font-semibold text-blue-800 mb-2">Visi</h4>
+          <p class="text-gray-600 mb-4">"Menjadi sekolah kejuruan unggulan yang menghasilkan lulusan berkompetensi global dan berkarakter Pancasila."</p>
+          
+          <h4 class="text-lg font-semibold text-blue-800 mb-2">Misi</h4>
+          <ul class="list-disc pl-5 text-gray-600 space-y-2">
+            <li>Menyelenggarakan pendidikan kejuruan yang berkualitas</li>
+            <li>Mengembangkan kompetensi siswa sesuai kebutuhan industri</li>
+            <li>Menumbuhkan karakter yang berlandaskan nilai-nilai luhur bangsa</li>
+            <li>Membangun kerjasama dengan dunia usaha dan industri</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Program Keahlian -->
+  <section id="program" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-blue-900 mb-4">Program Keahlian</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">SMK S MEKARSARI menyediakan program keahlian yang sesuai dengan kebutuhan dunia kerja saat ini.</p>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Teknik Sepeda Motor -->
+        <div class="program-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+          <div class="h-48 overflow-hidden">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d95efe7-5cdb-4d2f-ab03-108c7c1f23d2.png" alt="Siswa jurusan Teknik Sepeda Motor sedang praktek memperbaiki mesin motor di bengkel sekolah" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <div class="bg-blue-100 p-2 rounded-full">
+                <i class="fas fa-motorcycle text-blue-800 text-xl"></i>
+              </div>
+              <h3 class="ml-3 text-xl font-semibold text-gray-800">Teknik Sepeda Motor</h3>
+            </div>
+            <p class="text-gray-600 mb-4">Program keahlian yang membekali siswa dengan kompetensi perawatan dan perbaikan sepeda motor sesuai standar industri.</p>
+            <div class="space-y-2">
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-600">Pembelajaran berbasis proyek</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-600">Sertifikasi kompetensi</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-600">Praktek kerja industri</span>
+              </div>
+            </div>
+            <a href="#kontak" class="mt-4 inline-block text-blue-700 hover:text-blue-900 font-medium">Daftar Sekarang <i class="fas fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+        
+        <!-- Manajemen Perkantoran -->
+        <div class="program-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+          <div class="h-48 overflow-hidden">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a0d555a0-2103-427c-9f53-d9f1e0598be4.png" alt="Siswa jurusan Manajemen Perkantoran sedang belajar menggunakan komputer dan peralatan kantor modern" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <div class="bg-blue-100 p-2 rounded-full">
+                <i class="fas fa-briefcase text-blue-800 text-xl"></i>
+              </div>
+              <h3 class="ml-3 text-xl font-semibold text-gray-800">Manajemen Perkantoran</h3>
+            </div>
+            <p class="text-gray-600 mb-4">Program keahlian yang mengembangkan kompetensi siswa dalam pengelolaan administrasi perkantoran dan teknologi informasi terkini.</p>
+            <div class="space-y-2">
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-600">Pelatihan aplikasi perkantoran</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-600">Manajemen dokumen digital</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                <span class="text-gray-600">Komunikasi bisnis profesional</span>
+              </div>
+            </div>
+            <a href="#kontak" class="mt-4 inline-block text-blue-700 hover:text-blue-900 font-medium">Daftar Sekarang <i class="fas fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Fasilitas -->
+  <section id="fasilitas" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-blue-900 mb-4">Fasilitas Unggulan</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">SMK S MEKARSARI dilengkapi dengan berbagai fasilitas pendukung untuk optimalisasi pembelajaran.</p>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <div class="bg-blue-100 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-wifi text-blue-800 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">WiFi Area</h3>
+          <p class="text-gray-600">Akses internet cepat di seluruh area sekolah untuk mendukung pembelajaran digital.</p>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <div class="bg-blue-100 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-tools text-blue-800 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Bengkel Otomotif</h3>
+          <p class="text-gray-600">Bengkel lengkap dengan peralatan modern untuk praktik teknik sepeda motor.</p>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <div class="bg-blue-100 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-laptop text-blue-800 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Lab Komputer</h3>
+          <p class="text-gray-600">Ruangan ber-AC dengan komputer spesifikasi tinggi untuk kegiatan praktik.</p>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <div class="bg-blue-100 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-book text-blue-800 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Perpustakaan</h3>
+          <p class="text-gray-600">Koleksi buku teks dan referensi lengkap dengan ruang baca yang nyaman.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimoni -->
+  <section id="testimoni" class="py-20 bg-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-blue-900 mb-4">Apa Kata Mereka?</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Testimoni dari siswa, orang tua, dan mitra industri tentang SMK S MEKARSARI.</p>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="bg-white p-8 rounded-xl shadow-md">
+        <div id="testimonial-carousel" class="relative">
+          <!-- Carousel wrapper -->
+          <div class="overflow-hidden relative h-80">
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <div class="flex flex-col items-center text-center px-6">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b8c4e42a-71e5-4782-89ec-fa782be5c2da.png" alt="Potret siswa SMK S Mekarsari bernama Andi dengan seragam sekolah, tersenyum ramah" class="w-16 h-16 rounded-full object-cover mb-4" />
+                <div class="text-yellow-500 mb-2">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <p class="text-gray-600 mb-4 max-w-2xl">"SMK S MEKARSARI memberikan pengalaman belajar yang menarik dan praktik langsung di bengkel yang lengkap. Saya sekarang sudah bisa membuka usaha bengkel kecil-kecilan."</p>
+                <h4 class="font-semibold text-gray-800">Andi Putra</h4>
+                <p class="text-sm text-gray-500">Alumni Teknik Sepeda Motor, 2023</p>
+              </div>
+            </div>
             
-            // Back to top button
-             $(window).scroll(function() {
-            if ($(this).scrollTop() > 300) {
-                $('#back-to-top').fadeIn();
-            } else {
-                $('#back-to-top').fadeOut();
-            }
-            });
+            <!-- Item 2 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <div class="flex flex-col items-center text-center px-6">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dae7296e-bae2-4dc5-9043-4d96a0c1745d.png" alt="Potret orang tua siswa bernama Ibu Sari dengan penampilan rapi, tersenyum hangat" class="w-16 h-16 rounded-full object-cover mb-4" />
+                <div class="text-yellow-500 mb-2">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <p class="text-gray-600 mb-4 max-w-2xl">"Anak saya menjadi lebih disiplin dan bertanggung jawab setelah bersekolah di SMK S MEKARSARI. Sekolah ini tidak hanya mengajarkan keterampilan tapi juga karakter yang baik."</p>
+                <h4 class="font-semibold text-gray-800">Ibu Sari</h4>
+                <p class="text-sm text-gray-500">Orang Tua Siswa</p>
+              </div>
+            </div>
             
-            // Initialize tooltips
-            $('[data-bs-toggle="tooltip"]').tooltip();
+            <!-- Item 3 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <div class="flex flex-col items-center text-center px-6">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cc7f2805-0d94-4d0f-b38e-7899ca35d87e.png" alt="Potret manajer perusahaan bernama Pak Budi dengan kemeja formal, ekspresi profesional" class="w-16 h-16 rounded-full object-cover mb-4" />
+                <div class="text-yellow-500 mb-2">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="text-gray-600 mb-4 max-w-2xl">"Kami cukup sering menerima siswa PKL dari SMK S MEKARSARI dan hasilnya memuaskan. Mereka sudah memiliki dasar-dasar yang baik dan cepat beradaptasi."</p>
+                <h4 class="font-semibold text-gray-800">Budi Santoso</h4>
+                <p class="text-sm text-gray-500">Manajer PT. Sejahtera Motor</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Slider controls -->
+          <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev aria-label="Sebelumnya" title="Sebelumnya">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+              <i class="fas fa-chevron-left text-blue-800"></i>
+            </span>
+          </button>
+          <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next title="Berikutnya" aria-label="Berikutnya">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+              <i class="fas fa-chevron-right text-blue-800"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Kontak -->
+  <section id="kontak" class="py-20 bg-blue-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">Hubungi Kami</h2>
+        <p class="max-w-2xl mx-auto opacity-90">Untuk informasi lebih lanjut tentang pendaftaran dan program di SMK S MEKARSARI.</p>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="bg-white/10 p-6 rounded-xl">
+            <h3 class="text-xl font-semibold mb-4">Informasi Kontak</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="fas fa-map-marker-alt text-yellow-400"></i>
+                </div>
+                <div class="ml-3">
+                  <h4 class="font-medium">Alamat</h4>
+                  <p class="text-sm opacity-90">Jl. Pendidikan No. 123, Mekarsari, Tambun Selatan, Bekasi 17510</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="fas fa-phone-alt text-yellow-400"></i>
+                </div>
+                <div class="ml-3">
+                  <h4 class="font-medium">Telepon</h4>
+                  <p class="text-sm opacity-90">021-8923456</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="fas fa-envelope text-yellow-400"></i>
+                </div>
+                <div class="ml-3">
+                  <h4 class="font-medium">Email</h4>
+                  <p class="text-sm opacity-90">info@smksmekarsari.sch.id</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="fab fa-whatsapp text-yellow-400"></i>
+                </div>
+                <div class="ml-3">
+                  <h4 class="font-medium">WhatsApp</h4>
+                  <p class="text-sm opacity-90">0812-3456-7890 (Admin Pendaftaran)</p>
+                </div>
+              </div>
+            </div>
             
-            // Gallery image hover effect
-            $('.gallery-item').hover(
-                function() {
-                    $(this).find('img').css('transform', 'scale(1.1)');
-                },
-                function() {
-                    $(this).find('img').css('transform', 'scale(1)');
-                }
-            );
-            
-            // Form submission
-            $('form').submit(function(e) {
-            e.preventDefault();
-            alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan segera menghubungi Anda.');
-            this.reset();
-            });
+            <div class="mt-6 pt-6 border-t border-white/20">
+              <h4 class="font-semibold mb-3">Jam Operasional</h4>
+              <div class="text-sm space-y-2 opacity-90">
+                <p>Senin - Jumat: 07.30 - 16.00 WIB</p>
+                <p>Sabtu: 08.00 - 13.00 WIB</p>
+                <p>Minggu & Hari Libur: Tutup</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="bg-white/10 p-6 rounded-xl">
+            <h3 class="text-xl font-semibold mb-4">Formulir Kontak</h3>
+            <form>
+              <div class="grid gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium mb-1">Nama Lengkap</label>
+                  <input type="text" id="name" class="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Masukkan nama Anda">
+                </div>
+                
+                <div>
+                  <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                  <input type="email" id="email" class="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Masukkan email Anda">
+                </div>
+                
+                <div>
+                  <label for="phone" class="block text-sm font-medium mb-1">Nomor Telepon</label>
+                  <input type="tel" id="phone" class="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Masukkan nomor telepon">
+                </div>
+                
+                <div>
+                  <label for="subject" class="block text-sm font-medium mb-1">Subjek</label>
+                  <input type="text" id="subject" class="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Subjek pesan">
+                </div>
+                
+                <div>
+                  <label for="message" class="block text-sm font-medium mb-1">Pesan</label>
+                  <textarea id="message" rows="4" class="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Tulis pesan Anda"></textarea>
+                </div>
+                
+                <div>
+                  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold py-3 px-4 rounded-md transition duration-300">Kirim Pesan</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Peta Lokasi -->
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-blue-900">Lokasi Kami</h2>
+        <div class="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
+      </div>
+      <div class="rounded-xl overflow-hidden shadow-lg">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6074018d-7657-4704-9fc5-5bea52203018.png" alt="Peta lokasi SMK S Mekarsari di Tambun Selatan dengan penanda titik merah, dikelilingi jalan utama dan beberapa fasilitas umum" class="w-full h-96 object-cover" />
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid md:grid-cols-3 gap-10">
+        <div>
+          <div class="flex items-center mb-4">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6cad8f34-32ac-48eb-b4a0-37bc1f605450.png" alt="Logo kecil SMK S Mekarsari dengan ikon bunga mekar" class="h-8 w-auto mr-2" />
+            <span class="text-xl font-bold">SMK S MEKARSARI</span>
+          </div>
+          <p class="text-gray-400 mb-4">Sekolah Menengah Kejuruan yang berfokus pada pengembangan kompetensi siswa di bidang Teknik Sepeda Motor dan Manajemen Perkantoran.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Tautan Cepat</h3>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Beranda</a></li>
+            <li><a href="#profil" class="text-gray-400 hover:text-white transition duration-300">Profil Sekolah</a></li>
+            <li><a href="#program" class="text-gray-400 hover:text-white transition duration-300">Program Keahlian</a></li>
+            <li><a href="#fasilitas" class="text-gray-400 hover:text-white transition duration-300">Fasilitas</a></li>
+            <li><a href="#testimoni" class="text-gray-400 hover:text-white transition duration-300">Testimoni</a></li>
+            <li><a href="#kontak" class="text-gray-400 hover:text-white transition duration-300">Kontak</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Informasi</h3>
+          <ul class="space-y-2">
+            <li class="text-gray-400"><i class="fas fa-calendar-alt text-yellow-500 mr-2"></i> Tahun Ajaran 2024/2025</li>
+            <li class="text-gray-400"><i class="fas fa-users text-yellow-500 mr-2"></i> Terakreditasi A</li>
+            <li class="text-gray-400"><i class="fas fa-award text-yellow-500 mr-2"></i> Sekolah Berprestasi</li>
+            <li class="text-gray-400"><i class="fas fa-handshake text-yellow-500 mr-2"></i> Mitra Industri Terpercaya</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+        <p>© 2024 SMK S MEKARSARI - Tambun Selatan. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Flowbite JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
-    </script>
+        
+        // Close mobile menu if open
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+    
+    // Initialize carousel
+    const carousel = new Flowbite.Carousel('#testimonial-carousel');
+  </script>
 </body>
 </html>
 
